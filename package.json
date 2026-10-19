@@ -1,0 +1,20 @@
+{
+  "name": "bank-privacy-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bihar Cooperative Bank Ltd. (fictional) demo website integrated with cookie management, customer consent management and an admin dashboard.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "node --watch --disable-warning=ExperimentalWarning server/index.js",
+    "seed": "node --disable-warning=ExperimentalWarning scripts/seed.js",
+    "reset": "node scripts/reset.js",
+    "test": "node --disable-warning=ExperimentalWarning --test --test-concurrency=1 tests/*.test.js",
+    "test:e2e": "node tests/e2e-browser.js",
+    "build:static": "node --disable-warning=ExperimentalWarning scripts/build-static.js",
+    "preview:static": "node scripts/serve-static.js"
+  }
+}

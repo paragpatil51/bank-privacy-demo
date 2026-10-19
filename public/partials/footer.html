@@ -1,0 +1,99 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>Bihar Cooperative Bank Ltd.</h2>
+        <p>A fictional cooperative bank created for a privacy-integration demo. Registered office (fictional): Fraser Road, Patna 800001, Bihar.</p>
+        <p class="small">Deposits shown here are not real products. DICGC, RBI and other references are illustrative only.</p>
+      </div>
+      <div>
+        <h2>Banking</h2>
+        <ul>
+          <li><a href="/#services">Accounts &amp; deposits</a></li>
+          <li><a href="/#loans">Loans</a></li>
+          <li><a href="/#rates">Interest rates</a></li>
+          <li><a href="/open-account.html">Open an account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="/support.html">Customer support</a></li>
+          <li><a href="/contact.html">Contact us</a></li>
+          <li><a href="/about.html">About us</a></li>
+          <li><a href="/admin/">Consent admin (staff)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Privacy</h2>
+        <ul>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+          <li><button type="button" class="btn-link" data-cmp-open>Cookie settings</button></li>
+          <li><a href="/manage-consent.html">Manage my consents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{YEAR}} Bihar Cooperative Bank Ltd. (fictional). Demo only.</span>
+      <span>Built with privacy by design</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ Cookie consent (CMP) ============================ -->
+<section class="cmp-banner" id="cmp-banner" role="region" aria-labelledby="cmp-banner-title" hidden>
+  <h2 id="cmp-banner-title">We value your privacy</h2>
+  <p>
+    We use strictly necessary cookies to run this website. With your permission we would also like to use
+    <strong>analytics</strong> cookies to improve the site and <strong>marketing</strong> cookies to show relevant offers.
+    Optional cookies stay off unless you turn them on. You can change your choice at any time from
+    “Cookie settings” in the footer. See our <a href="/cookie-policy.html">Cookie Policy</a>.
+  </p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" data-cmp-action="accept_all">Accept all</button>
+    <button type="button" class="btn btn-primary" data-cmp-action="reject_optional">Reject optional</button>
+    <button type="button" class="btn btn-secondary" data-cmp-open>Manage preferences</button>
+  </div>
+  <p class="cmp-error" data-cmp-error role="alert" hidden></p>
+</section>
+
+<div class="cmp-overlay" id="cmp-overlay" hidden>
+  <div class="cmp-modal" role="dialog" aria-modal="true" aria-labelledby="cmp-modal-title">
+    <header>
+      <h2 id="cmp-modal-title">Cookie preferences</h2>
+      <button type="button" class="cmp-close" data-cmp-close aria-label="Close cookie preferences">×</button>
+    </header>
+    <div class="cmp-body">
+      <p>Choose which optional cookies we may use. Strictly necessary cookies are always on because the site cannot work without them. Your choice is saved with the cookie policy version (v{{COOKIE_POLICY_VERSION}}) and a timestamp.</p>
+      <div id="cmp-categories"></div>
+      <p class="cmp-meta" id="cmp-current"></p>
+      <p class="cmp-error" data-cmp-error role="alert" hidden></p>
+    </div>
+    <footer>
+      <button type="button" class="btn btn-ghost" data-cmp-action="reject_optional">Reject optional</button>
+      <button type="button" class="btn btn-secondary" data-cmp-action="custom">Save my choices</button>
+      <button type="button" class="btn btn-primary" data-cmp-action="accept_all">Accept all</button>
+    </footer>
+  </div>
+</div>
+
+<button type="button" class="cmp-fab" id="cmp-fab" data-cmp-open aria-label="Cookie settings" title="Cookie settings" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+    <path d="M12 3a9 9 0 1 0 9 9 3 3 0 0 1-3-3 3 3 0 0 1-3-3 3 3 0 0 1-3-3Z"/>
+    <circle cx="8.5" cy="11.5" r=".8" fill="currentColor"/><circle cx="12" cy="16" r=".8" fill="currentColor"/><circle cx="15.5" cy="13" r=".8" fill="currentColor"/>
+  </svg>
+</button>
+<div class="cmp-toast" id="cmp-toast" role="status" aria-live="polite" hidden></div>
+
+<script type="application/json" id="cmp-config">{{CMP_CONFIG_JSON}}</script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/consent-manager.js" defer></script>
+
+<!--
+  Optional third-party scripts are BLOCKED by default: type="text/plain" means the
+  browser never executes them. The consent manager turns them into real scripts only
+  after the visitor has given (and the server has recorded) consent for that category.
+-->
+<script type="text/plain" data-cmp-category="analytics" data-cmp-src="/assets/js/vendor/demo-analytics.js"></script>
+<script type="text/plain" data-cmp-category="marketing" data-cmp-src="/assets/js/vendor/demo-marketing.js"></script>

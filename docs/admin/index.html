@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; require-trusted-types-for 'script'; trusted-types bcb-cmp; upgrade-insecure-requests">
+  <script src="../assets/js/frame-guard.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consent Admin – Bihar Cooperative Bank (Demo)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script src="../assets/js/mock-config.js"></script>
+  <script src="../assets/js/mock-api.js"></script>
+</head>
+<body class="admin">
+  <!-- Login -->
+  <main id="login-view" class="login-wrap" hidden>
+    <form class="form-card login-card" id="login-form" novalidate>
+      <div class="pv-logo"><span class="pv-mark" aria-hidden="true">C</span> Consent Admin</div>
+      <h1>Admin sign in</h1>
+      <p class="muted small">Consent &amp; privacy dashboard for Bihar Cooperative Bank Ltd. (demo). Authorised staff only. All access is audited.</p>
+      <div class="callout callout-danger" id="login-error" role="alert" hidden></div>
+      <div class="field">
+        <label for="login-username">Username</label>
+        <input type="text" id="login-username" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="login-btn">Sign in</button>
+      <p class="small muted mt-12" id="login-hint">Demo credentials are printed in the server console on start-up.</p>
+      <p class="small muted">Protected by privacy-friendly human verification (no puzzles, no tracking).</p>
+      <p class="small"><a href="../">← Back to bank website</a></p>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div id="app-view" hidden>
+    <header class="pv-topbar">
+      <div class="pv-logo"><span class="pv-mark" aria-hidden="true">C</span> Consent Admin <span class="pv-sub">Bihar Cooperative Bank (demo)</span></div>
+      <div class="pv-user">
+        <span id="pv-username" class="small"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="refresh-btn">Refresh</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="logout-btn">Sign out</button>
+      </div>
+    </header>
+    <div class="callout callout-warn pv-banner" id="dev-password-warning" hidden>
+      <p>You are using the development default admin password. Set <code>ADMIN_PASSWORD</code> before any real deployment.</p>
+    </div>
+    <nav class="pv-tabs" role="tablist" aria-label="Dashboard sections">
+      <button type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
+      <button type="button" role="tab" id="tab-customers" aria-controls="panel-customers" aria-selected="false" data-tab="customers">Customer consents</button>
+      <button type="button" role="tab" id="tab-cookies" aria-controls="panel-cookies" aria-selected="false" data-tab="cookies">Cookie consents</button>
+      <button type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="false" data-tab="audit">Audit trail</button>
+    </nav>
+
+    <main class="pv-main">
+      <div class="callout callout-danger" id="app-error" role="alert" hidden></div>
+
+      <!-- Overview -->
+      <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" data-panel="overview">
+        <div class="kpi-row" id="kpis"></div>
+        <div class="pv-grid">
+          <div class="pv-card">
+            <h2>Customer consent status by purpose</h2>
+            <p class="muted small">Current state of each customer's consent record.</p>
+            <div id="purpose-bars"></div>
+          </div>
+          <div class="pv-card">
+            <h2>Cookie decisions</h2>
+            <p class="muted small">Latest decision per visitor.</p>
+            <div class="mini-tiles" id="cookie-tiles"></div>
+            <h3 class="mt-16">Optional scripts: server-side evidence</h3>
+            <p class="muted small">Events received from the demo analytics/marketing scripts. The API rejects any event without a recorded consent.</p>
+            <div class="mini-tiles" id="telemetry-tiles"></div>
+          </div>
+        </div>
+        <div class="pv-grid">
+          <div class="pv-card">
+            <h2>Recent activity</h2>
+            <ul class="activity" id="recent-activity"></ul>
+          </div>
+          <div class="pv-card">
+            <h2>Published policy versions</h2>
+            <div class="table-wrap"><table><thead><tr><th>Policy</th><th>Version</th><th>Effective</th><th>Content hash</th></tr></thead><tbody id="policy-rows"></tbody></table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customers -->
+      <section id="panel-customers" role="tabpanel" aria-labelledby="tab-customers" data-panel="customers" hidden>
+        <form class="filter-row" id="customer-filters">
+          <div class="field grow">
+            <label for="cf-q">Search customer</label>
+            <input type="text" id="cf-q" placeholder="Name, exact email, mobile or reference (BCB-…)">
+          </div>
+          <div class="field">
+            <label for="cf-purpose">Purpose</label>
+            <select id="cf-purpose"><option value="">Any purpose</option></select>
+          </div>
+          <div class="field">
+            <label for="cf-status">Consent status</label>
+            <select id="cf-status">
+              <option value="">Any status</option>
+              <option value="granted">Granted</option>
+              <option value="denied">Not given</option>
+              <option value="withdrawn">Withdrawn</option>
+              <option value="acknowledged">Acknowledged</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="reset" class="btn btn-ghost">Reset</button>
+          </div>
+        </form>
+        <p class="small muted" id="customer-count"></p>
+        <div class="table-wrap">
+          <table class="clickable">
+            <thead><tr><th>Reference</th><th>Name</th><th>Email</th><th>Mobile</th><th>Account</th><th>Marketing</th><th>Third-party</th><th>Submitted</th></tr></thead>
+            <tbody id="customer-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Cookies -->
+      <section id="panel-cookies" role="tabpanel" aria-labelledby="tab-cookies" data-panel="cookies" hidden>
+        <form class="filter-row" id="cookie-filters">
+          <div class="field grow">
+            <label for="kf-visitor">Visitor ID</label>
+            <input type="text" id="kf-visitor" placeholder="Start of visitor UUID">
+          </div>
+          <div class="field">
+            <label for="kf-action">Decision</label>
+            <select id="kf-action">
+              <option value="">Any decision</option>
+              <option value="accept_all">Accept all</option>
+              <option value="reject_optional">Reject optional</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kf-category">Allowed category</label>
+            <select id="kf-category">
+              <option value="">Any</option>
+              <option value="analytics">Analytics allowed</option>
+              <option value="marketing">Marketing allowed</option>
+              <option value="none">Only necessary</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kf-history">Records</label>
+            <select id="kf-history">
+              <option value="latest">Latest per visitor</option>
+              <option value="all">Full history</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="reset" class="btn btn-ghost">Reset</button>
+          </div>
+        </form>
+        <p class="small muted" id="cookie-count"></p>
+        <div class="table-wrap">
+          <table class="clickable">
+            <thead><tr><th>Visitor</th><th>Decision</th><th>Necessary</th><th>Analytics</th><th>Marketing</th><th>Policy</th><th>Recorded</th><th>Changes</th></tr></thead>
+            <tbody id="cookie-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Audit -->
+      <section id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" data-panel="audit" hidden>
+        <form class="filter-row" id="audit-filters">
+          <div class="field">
+            <label for="af-action">Event</label>
+            <select id="af-action"><option value="">All events</option></select>
+          </div>
+          <div class="field">
+            <label for="af-entity">Entity</label>
+            <select id="af-entity">
+              <option value="">All entities</option>
+              <option value="customer">Customer</option>
+              <option value="cookie_consent">Cookie consent</option>
+              <option value="admin_session">Admin session</option>
+              <option value="policy">Policy</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="button" class="btn btn-secondary" id="verify-btn">Verify integrity</button>
+          </div>
+        </form>
+        <div class="callout" id="verify-result" role="status" hidden></div>
+        <p class="small muted">The audit log is append-only (database triggers block UPDATE/DELETE) and each entry is HMAC-chained to the previous one, so any tampering is detectable.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Time</th><th>Actor</th><th>Event</th><th>Entity</th><th>Details</th><th>Hash</th></tr></thead>
+            <tbody id="audit-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Detail drawer -->
+  <div class="drawer-overlay" id="drawer" hidden>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <header>
+        <h2 id="drawer-title">Details</h2>
+        <button type="button" class="cmp-close" id="drawer-close" aria-label="Close details">×</button>
+      </header>
+      <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+  </div>
+
+  <script src="../assets/js/captcha.js" defer></script>
+  <script src="../assets/js/admin.js" defer></script>
+</body>
+</html>

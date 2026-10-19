@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookie Policy – Bihar Cooperative Bank Ltd. (Demo)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<!--#include "header.html" -->
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Home</a> / Cookie Policy</div>
+      <h1>Cookie Policy</h1>
+      <p>What cookies we use, why, and how to control them.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <div class="policy-meta">
+        <span class="badge">Version {{COOKIE_POLICY_VERSION}}</span>
+        <span>Effective from {{COOKIE_POLICY_DATE}}</span>
+      </div>
+
+      <h2>Your current settings</h2>
+      <p>This panel shows, live, what your choice is and whether the optional scripts on this page are actually running.</p>
+      <div id="consent-status">
+        <div class="status-grid">
+          <div class="status-tile"><span class="k">Your decision</span><span class="v" data-status="decision">–</span></div>
+          <div class="status-tile"><span class="k">Consent ID</span><span class="v small" data-status="consent-id">–</span></div>
+          <div class="status-tile"><span class="k">Policy version accepted</span><span class="v" data-status="version">–</span></div>
+          <div class="status-tile"><span class="k">Analytics consent</span><span class="v" data-status="analytics">–</span></div>
+          <div class="status-tile"><span class="k">Marketing consent</span><span class="v" data-status="marketing">–</span></div>
+          <div class="status-tile"><span class="k">Analytics script</span><span class="v" data-status="analytics-script">–</span></div>
+          <div class="status-tile"><span class="k">Marketing pixel</span><span class="v" data-status="marketing-script">–</span></div>
+          <div class="status-tile"><span class="k">Cookies visible to this page</span><span class="v small" data-status="cookies">–</span></div>
+        </div>
+        <button type="button" class="btn btn-primary" data-cmp-open>Change cookie settings</button>
+      </div>
+
+      <h2>What are cookies?</h2>
+      <p>Cookies are small text files stored by your browser. Some are essential for a website to work; others help us measure use of the site or show relevant advertising.</p>
+
+      <h2>Categories we use</h2>
+      <ul>
+        <li><strong>Strictly necessary:</strong> always on; needed for security and to remember your cookie choice.</li>
+        <li><strong>Analytics (optional):</strong> off until you allow it. Measures how the site is used.</li>
+        <li><strong>Marketing (optional):</strong> off until you allow it. Measures campaigns and personalises offers.</li>
+      </ul>
+
+      <h2>Cookie list</h2>
+      <div class="table-wrap">{{COOKIE_TABLE_HTML}}</div>
+
+      <h2>How we honour your choice</h2>
+      <ul>
+        <li>Optional scripts are <strong>not loaded at all</strong> until you consent; showing the banner is not treated as consent.</li>
+        <li>“Reject optional” is as easy to choose as “Accept all”.</li>
+        <li>Your choice is recorded with a consent ID, a timestamp and the policy version (v{{COOKIE_POLICY_VERSION}}). If we change this policy, we ask you again.</li>
+        <li>Your choice expires after 180 days and we ask again.</li>
+        <li>If you switch a category off, we delete its cookies and reload the page so its scripts stop.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<!--#include "footer.html" -->
+<script src="/assets/js/cookie-status.js" defer></script>
+</body>
+</html>

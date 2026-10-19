@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage My Consents – Bihar Cooperative Bank Ltd. (Demo)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<!--#include "header.html" -->
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">Home</a> / Manage my consents</div>
+      <h1>Manage my consents</h1>
+      <p>Review, give or withdraw your optional consents at any time.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="callout callout-danger" id="mc-error" role="alert" hidden></div>
+
+      <div class="form-card" id="mc-no-token" hidden>
+        <h2>Open your consent management link</h2>
+        <p>After you apply, we give you a private consent management link (in production it is emailed to you and protected by an OTP). Open that link to manage your choices.</p>
+        <p class="muted">You can also contact our Data Protection Officer at dpo@bcb-demo.example, or call 1800-000-0000.</p>
+      </div>
+
+      <div id="mc-panel" hidden>
+        <div class="form-card">
+          <h2>Hello, <span id="mc-name"></span></h2>
+          <p class="muted">Application <strong id="mc-ref"></strong> · <span id="mc-contact"></span></p>
+          <div class="callout callout-success" id="mc-success" role="status" hidden></div>
+
+          <h3>Required processing</h3>
+          <div id="mc-required"></div>
+
+          <h3>Optional consents</h3>
+          <p class="muted small">Switch on or off and press Save. Withdrawing takes effect immediately and does not affect your account.</p>
+          <form id="mc-form" novalidate>
+            <div id="mc-optional"></div>
+            <div class="form-actions">
+              <span class="small muted">Recorded against privacy notice v<span id="mc-version"></span></span>
+              <button type="submit" class="btn btn-primary" id="mc-save">Save my choices</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-card mt-12">
+          <h3>Consent history</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">When</th><th scope="col">Purpose</th><th scope="col">Change</th><th scope="col">Source</th><th scope="col">Notice</th></tr></thead>
+              <tbody id="mc-history"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!--#include "footer.html" -->
+<script type="application/json" id="consent-config">{{CONSENT_CONFIG_JSON}}</script>
+<script src="/assets/js/manage-consent.js" defer></script>
+</body>
+</html>

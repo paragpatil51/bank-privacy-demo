@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; require-trusted-types-for 'script'; trusted-types bcb-cmp; upgrade-insecure-requests">
+  <meta name="referrer" content="same-origin">
+  <script src="./assets/js/frame-guard.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open an Account – Bihar Cooperative Bank Ltd. (Demo)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <script src="./assets/js/mock-config.js"></script>
+  <script src="./assets/js/mock-api.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="demo-strip" role="note">
+  Fictional prototype built for a technical assessment. This is <strong>not</strong> an official bank website. Use dummy data only.
+</div>
+<div class="utility-bar">
+  <div class="container">
+    <span>Toll-free helpline: <a href="tel:18000000000">1800-000-0000</a> (demo)</span>
+    <span><a href="./support.html#fraud">Report fraud</a> · <a href="./support.html">Customer support</a></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="./" aria-label="Bihar Cooperative Bank Ltd. – home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 6 10v13c0 11 7.7 19.6 18 22 10.3-2.4 18-11 18-22V10L24 3Z" fill="#0b5d3b"/>
+        <path d="M24 12c-5 6-8 10-8 14a8 8 0 0 0 16 0c0-4-3-8-8-14Z" fill="#c8901a"/>
+        <path d="M24 20v16M24 28l-4-3M24 31l4-3" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span>
+        <span class="brand-name">Bihar Cooperative Bank</span>
+        <span class="brand-tag">LTD. · SERVING BIHAR SINCE 1952 (FICTIONAL)</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="./#services">Services</a></li>
+        <li><a href="./about.html">About Us</a></li>
+        <li><a href="./support.html">Support</a></li>
+        <li><a href="./contact.html">Contact Us</a></li>
+        <li><a class="btn btn-primary" href="./open-account.html">Open an Account</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="./">Home</a> / Open an Account</div>
+      <h1>Open an account online</h1>
+      <p>Three short steps. We explain how your data is used before you share anything optional.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <noscript><div class="callout callout-warn"><p>Please enable JavaScript to use the online application, or visit any branch.</p></div></noscript>
+      <div class="callout callout-warn"><p><strong>Demo only:</strong> enter fictional details. Do not enter real personal data.</p></div>
+
+      <ol class="stepper" id="stepper" aria-label="Application progress">
+        <li data-step="1">Your details</li>
+        <li data-step="2">Privacy &amp; consent</li>
+        <li data-step="3">Review</li>
+        <li data-step="4">Confirmation</li>
+      </ol>
+
+      <div class="form-card">
+        <div class="callout callout-danger form-error-summary" id="error-summary" role="alert" tabindex="-1" hidden></div>
+
+        <form id="onboarding-form" novalidate>
+          <!-- Step 1 -->
+          <section data-step-panel="1" aria-labelledby="step1-title">
+            <h2 id="step1-title" tabindex="-1">Your details</h2>
+            <p class="muted small">Fields marked <span class="req">*</span> are required. We only ask for what we need to process your application.</p>
+            <div class="field">
+              <label for="fullName">Full name (as per your ID) <span class="req">*</span></label>
+              <input type="text" id="fullName" name="fullName" autocomplete="name" maxlength="100" required aria-describedby="fullName-error">
+              <div class="error-text" id="fullName-error" hidden></div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="email">Email address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">
+                <div class="error-text" id="email-error" hidden></div>
+              </div>
+              <div class="field">
+                <label for="mobile">Mobile number <span class="req">*</span></label>
+                <div class="input-prefix"><span aria-hidden="true">+91</span>
+                  <input type="tel" id="mobile" name="mobile" autocomplete="tel-national" inputmode="numeric" maxlength="14" required aria-describedby="mobile-hint mobile-error">
+                </div>
+                <div class="hint" id="mobile-hint">10-digit Indian mobile number, e.g. 98765 43210</div>
+                <div class="error-text" id="mobile-error" hidden></div>
+              </div>
+              <div class="field">
+                <label for="dateOfBirth">Date of birth <span class="req">*</span></label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" autocomplete="bday" required aria-describedby="dob-hint dateOfBirth-error">
+                <div class="hint" id="dob-hint">You must be 18 or over to apply online.</div>
+                <div class="error-text" id="dateOfBirth-error" hidden></div>
+              </div>
+              <div class="field">
+                <label for="accountType">Account type <span class="req">*</span></label>
+                <select id="accountType" name="accountType" required aria-describedby="accountType-error"><option value="">Select…</option></select>
+                <div class="error-text" id="accountType-error" hidden></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="branch">Preferred branch <span class="req">*</span></label>
+              <select id="branch" name="branch" required aria-describedby="branch-error"><option value="">Select…</option></select>
+              <div class="error-text" id="branch-error" hidden></div>
+            </div>
+            <div class="form-actions">
+              <span></span>
+              <button type="button" class="btn btn-primary" data-next="2">Continue to privacy &amp; consent</button>
+            </div>
+          </section>
+
+          <!-- Step 2 -->
+          <section data-step-panel="2" aria-labelledby="step2-title" hidden>
+            <h2 id="step2-title" tabindex="-1">Privacy notice and your choices</h2>
+            <p class="muted">Please read how we will use your personal data. <a href="./privacy-policy.html" target="_blank" rel="noopener">Open the full Privacy Policy</a> (new tab).</p>
+
+            <div class="notice-box" tabindex="0" role="region" aria-labelledby="notice-title">
+              <h3 id="notice-title">Privacy notice: account opening (version 2026.10, effective 2026-10-01)</h3>
+              <p><strong>Who is collecting your data:</strong> Bihar Cooperative Bank Ltd. (fictional), Fraser Road, Patna, as Data Fiduciary.</p>
+              <p><strong>What we collect:</strong> your full name, email address, mobile number, date of birth, account type and preferred branch.</p>
+              <h3>Why we collect it</h3>
+              <ul id="notice-purposes"></ul>
+              <h3>Sharing</h3>
+              <p>With regulators and KYC registries where the law requires; with IT and SMS service providers acting for us; and with our insurance partner <strong>only if you agree</strong>.</p>
+              <h3>Retention</h3>
+              <p>Application and KYC data are kept as long as banking law requires. Data for optional purposes stops being used when you withdraw consent.</p>
+              <h3>Your rights</h3>
+              <p>You can access, correct and erase your data, withdraw any consent at any time (as easily as giving it), nominate someone to act for you, and raise a grievance with our Data Protection Officer (dpo@bcb-demo.example) and then the Data Protection Board of India.</p>
+            </div>
+
+            <fieldset class="consent-group" id="required-group">
+              <legend>Required to process your application</legend>
+              <p class="group-hint">This is an acknowledgement, not a marketing consent. We need this processing to open the account you asked for and to meet legal obligations.</p>
+            </fieldset>
+
+            <fieldset class="consent-group" id="optional-group">
+              <legend>Optional: your choice</legend>
+              <p class="group-hint">You can open your account without any of these. They are <strong>off</strong> unless you switch them on, and you can change them at any time.</p>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" data-next="1">Back</button>
+              <button type="button" class="btn btn-primary" data-next="3">Review my application</button>
+            </div>
+          </section>
+
+          <!-- Step 3 -->
+          <section data-step-panel="3" aria-labelledby="step3-title" hidden>
+            <h2 id="step3-title" tabindex="-1">Review your application</h2>
+            <p class="muted">Check your details and choices before you submit. You can go back and change anything.</p>
+            <div class="review-head"><h3>Your details</h3><button type="button" class="btn-link" data-next="1">Edit details</button></div>
+            <dl class="review-list" id="review-details"></dl>
+            <div class="review-head"><h3>Privacy choices</h3><button type="button" class="btn-link" data-next="2">Change choices</button></div>
+            <dl class="review-list" id="review-consents"></dl>
+            <p class="small muted">When you submit, these choices will be recorded with the date and time and privacy notice version 2026.10.</p>
+            <div class="captcha-box" data-state="idle">
+              <span class="captcha-dot" aria-hidden="true"></span>
+              <div>
+                <strong id="captcha-status" role="status" aria-live="polite">Human verification starts automatically</strong>
+                <span class="small muted">Privacy-friendly check that runs in your browser: no puzzles, no cookies, no tracking.</span>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" data-next="2">Back</button>
+              <button type="submit" class="btn btn-primary" id="submit-btn">Submit application</button>
+            </div>
+          </section>
+        </form>
+
+        <!-- Step 4 -->
+        <section data-step-panel="4" aria-labelledby="step4-title" hidden>
+          <div class="confirmation-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+          <h2 id="step4-title" class="center" tabindex="-1">Application submitted</h2>
+          <p class="center muted">Thank you, <span id="conf-name"></span>. We have received your application and recorded your privacy choices.</p>
+          <div class="ref-box">Application reference<strong id="conf-ref"></strong><span class="small muted" id="conf-time"></span></div>
+          <h3>Recorded privacy choices</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">Purpose</th><th scope="col">Status</th><th scope="col">Notice version</th><th scope="col">Recorded at</th></tr></thead>
+              <tbody id="conf-consents"></tbody>
+            </table>
+          </div>
+          <h3>Change your choices later</h3>
+          <p>Use this private link to review or withdraw optional consents at any time. Keep it safe: anyone with the link can change your preferences. <span class="muted">(In production it would be sent to your verified email, protected by an OTP.)</span></p>
+          <code class="code-line" id="conf-link"></code>
+          <div class="btn-row mt-12" id="conf-actions">
+            <a class="btn btn-secondary" id="conf-manage" href="./manage-consent.html">Manage my consents</a>
+            <button type="button" class="btn btn-ghost" id="conf-copy">Copy link</button>
+          </div>
+          <h3>What happens next</h3>
+          <ol>
+            <li>We will contact you on your mobile number <span id="conf-mobile"></span> to schedule KYC verification.</li>
+            <li>Bring original ID and address proof to your chosen branch, or complete video KYC.</li>
+            <li>Your account details will be sent once KYC is complete.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>Bihar Cooperative Bank Ltd.</h2>
+        <p>A fictional cooperative bank created for a privacy-integration demo. Registered office (fictional): Fraser Road, Patna 800001, Bihar.</p>
+        <p class="small">Deposits shown here are not real products. DICGC, RBI and other references are illustrative only.</p>
+      </div>
+      <div>
+        <h2>Banking</h2>
+        <ul>
+          <li><a href="./#services">Accounts &amp; deposits</a></li>
+          <li><a href="./#loans">Loans</a></li>
+          <li><a href="./#rates">Interest rates</a></li>
+          <li><a href="./open-account.html">Open an account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="./support.html">Customer support</a></li>
+          <li><a href="./contact.html">Contact us</a></li>
+          <li><a href="./about.html">About us</a></li>
+          <li><a href="./admin/">Consent admin (staff)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Privacy</h2>
+        <ul>
+          <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="./cookie-policy.html">Cookie Policy</a></li>
+          <li><button type="button" class="btn-link" data-cmp-open>Cookie settings</button></li>
+          <li><a href="./manage-consent.html">Manage my consents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bihar Cooperative Bank Ltd. (fictional). Demo only.</span>
+      <span>Built with privacy by design</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ Cookie consent (CMP) ============================ -->
+<section class="cmp-banner" id="cmp-banner" role="region" aria-labelledby="cmp-banner-title" hidden>
+  <h2 id="cmp-banner-title">We value your privacy</h2>
+  <p>
+    We use strictly necessary cookies to run this website. With your permission we would also like to use
+    <strong>analytics</strong> cookies to improve the site and <strong>marketing</strong> cookies to show relevant offers.
+    Optional cookies stay off unless you turn them on. You can change your choice at any time from
+    “Cookie settings” in the footer. See our <a href="./cookie-policy.html">Cookie Policy</a>.
+  </p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" data-cmp-action="accept_all">Accept all</button>
+    <button type="button" class="btn btn-primary" data-cmp-action="reject_optional">Reject optional</button>
+    <button type="button" class="btn btn-secondary" data-cmp-open>Manage preferences</button>
+  </div>
+  <p class="cmp-error" data-cmp-error role="alert" hidden></p>
+</section>
+
+<div class="cmp-overlay" id="cmp-overlay" hidden>
+  <div class="cmp-modal" role="dialog" aria-modal="true" aria-labelledby="cmp-modal-title">
+    <header>
+      <h2 id="cmp-modal-title">Cookie preferences</h2>
+      <button type="button" class="cmp-close" data-cmp-close aria-label="Close cookie preferences">×</button>
+    </header>
+    <div class="cmp-body">
+      <p>Choose which optional cookies we may use. Strictly necessary cookies are always on because the site cannot work without them. Your choice is saved with the cookie policy version (v1.0) and a timestamp.</p>
+      <div id="cmp-categories"></div>
+      <p class="cmp-meta" id="cmp-current"></p>
+      <p class="cmp-error" data-cmp-error role="alert" hidden></p>
+    </div>
+    <footer>
+      <button type="button" class="btn btn-ghost" data-cmp-action="reject_optional">Reject optional</button>
+      <button type="button" class="btn btn-secondary" data-cmp-action="custom">Save my choices</button>
+      <button type="button" class="btn btn-primary" data-cmp-action="accept_all">Accept all</button>
+    </footer>
+  </div>
+</div>
+
+<button type="button" class="cmp-fab" id="cmp-fab" data-cmp-open aria-label="Cookie settings" title="Cookie settings" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+    <path d="M12 3a9 9 0 1 0 9 9 3 3 0 0 1-3-3 3 3 0 0 1-3-3 3 3 0 0 1-3-3Z"/>
+    <circle cx="8.5" cy="11.5" r=".8" fill="currentColor"/><circle cx="12" cy="16" r=".8" fill="currentColor"/><circle cx="15.5" cy="13" r=".8" fill="currentColor"/>
+  </svg>
+</button>
+<div class="cmp-toast" id="cmp-toast" role="status" aria-live="polite" hidden></div>
+
+<script type="application/json" id="cmp-config">{"policyVersion":"1.0","maxAgeDays":180,"cookieName":"bcb_consent","endpoint":"/api/cookie-consents","categories":[{"id":"necessary","title":"Strictly necessary","required":true,"description":"Essential for the website to work securely, for example remembering your cookie choices. These cannot be switched off and do not track you.","cookies":[{"name":"bcb_consent","provider":"Bihar Cooperative Bank (first party)","purpose":"Stores your cookie choices, consent ID and policy version so we respect them on later visits.","duration":"180 days"},{"name":"bcb_admin_session","provider":"Bihar Cooperative Bank (first party)","purpose":"Keeps authorised staff signed in to the consent admin dashboard. Set only after staff login.","duration":"30 minutes of inactivity"}]},{"id":"analytics","title":"Analytics","required":false,"description":"Help us understand how visitors use the website (pages visited, visit length) so we can improve it.","cookies":[{"name":"_bcb_an_id","provider":"Demo Analytics (simulated third party)","purpose":"Distinguishes unique visitors for page-view statistics.","duration":"1 year"},{"name":"_bcb_an_session","provider":"Demo Analytics (simulated third party)","purpose":"Groups page views into a single visit.","duration":"30 minutes"}]},{"id":"marketing","title":"Marketing","required":false,"description":"Measure our advertising campaigns and show you relevant offers for our products on other websites.","cookies":[{"name":"_bcb_mkt_id","provider":"Demo Ads Network (simulated third party)","purpose":"Identifies your browser to measure campaign conversions and personalise offers.","duration":"90 days"}]}]}</script>
+<script src="./assets/js/site.js" defer></script>
+<script src="./assets/js/consent-manager.js" defer></script>
+
+<!--
+  Optional third-party scripts are BLOCKED by default: type="text/plain" means the
+  browser never executes them. The consent manager turns them into real scripts only
+  after the visitor has given (and the server has recorded) consent for that category.
+-->
+<script type="text/plain" data-cmp-category="analytics" data-cmp-src="./assets/js/vendor/demo-analytics.js"></script>
+<script type="text/plain" data-cmp-category="marketing" data-cmp-src="./assets/js/vendor/demo-marketing.js"></script>
+
+<script type="application/json" id="consent-config">{"cookiePolicy":{"version":"1.0","effectiveFrom":"2026-10-01","consentMaxAgeDays":180,"cookieName":"bcb_consent","categories":[{"id":"necessary","title":"Strictly necessary","required":true,"description":"Essential for the website to work securely, for example remembering your cookie choices. These cannot be switched off and do not track you.","cookies":[{"name":"bcb_consent","provider":"Bihar Cooperative Bank (first party)","purpose":"Stores your cookie choices, consent ID and policy version so we respect them on later visits.","duration":"180 days"},{"name":"bcb_admin_session","provider":"Bihar Cooperative Bank (first party)","purpose":"Keeps authorised staff signed in to the consent admin dashboard. Set only after staff login.","duration":"30 minutes of inactivity"}]},{"id":"analytics","title":"Analytics","required":false,"description":"Help us understand how visitors use the website (pages visited, visit length) so we can improve it.","cookies":[{"name":"_bcb_an_id","provider":"Demo Analytics (simulated third party)","purpose":"Distinguishes unique visitors for page-view statistics.","duration":"1 year"},{"name":"_bcb_an_session","provider":"Demo Analytics (simulated third party)","purpose":"Groups page views into a single visit.","duration":"30 minutes"}]},{"id":"marketing","title":"Marketing","required":false,"description":"Measure our advertising campaigns and show you relevant offers for our products on other websites.","cookies":[{"name":"_bcb_mkt_id","provider":"Demo Ads Network (simulated third party)","purpose":"Identifies your browser to measure campaign conversions and personalise offers.","duration":"90 days"}]}]},"privacyNotice":{"version":"2026.10","effectiveFrom":"2026-10-01","purposes":[{"id":"account_opening","title":"Account opening, KYC and regulatory compliance","legalBasis":"necessary","required":true,"description":"We use your name, email, mobile number and date of birth to process your account-opening request, verify your identity (KYC) and meet our legal obligations under RBI and anti-money-laundering rules. This is needed to open the account you asked for.","dataUsed":["Full name","Email","Mobile number","Date of birth","Account type","Branch"]},{"id":"marketing_communications","title":"Marketing communications","legalBasis":"consent","required":false,"description":"Send you offers about our deposits, loans and other products by email and SMS. Optional: your account is not affected if you say no, and you can withdraw at any time.","dataUsed":["Full name","Email","Mobile number"]},{"id":"third_party_sharing","title":"Sharing with our insurance partner","legalBasis":"consent","required":false,"description":"Share your name, email and mobile number with our insurance partner, Ganga Demo Insurance Ltd. (fictional), so they can contact you about insurance products. Optional: you can withdraw at any time.","dataUsed":["Full name","Email","Mobile number"]}]},"bank":{"name":"Bihar Cooperative Bank Ltd.","branches":[{"id":"patna_main","name":"Patna Main Branch, Fraser Road"},{"id":"patna_kankarbagh","name":"Patna – Kankarbagh"},{"id":"gaya","name":"Gaya"},{"id":"muzaffarpur","name":"Muzaffarpur"},{"id":"bhagalpur","name":"Bhagalpur"},{"id":"darbhanga","name":"Darbhanga"},{"id":"purnia","name":"Purnia"}],"accountTypes":[{"id":"savings","name":"Savings Account"},{"id":"current","name":"Current Account"},{"id":"fixed_deposit","name":"Fixed Deposit"},{"id":"recurring_deposit","name":"Recurring Deposit"}]}}</script>
+<script src="./assets/js/captcha.js" defer></script>
+<script src="./assets/js/onboarding.js" defer></script>
+</body>
+</html>
